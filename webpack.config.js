@@ -1,11 +1,15 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+
 module.exports = {
     //Exposed all Objects
 
     //Created any name
-     entry: './ex/index.js',
+     entry: [
+         'babel-polyfill',
+         './app/index.js'
+     ],
      output:{
          path: __dirname + '/public',
          filename: './bundle.js'
@@ -27,7 +31,7 @@ module.exports = {
              loader: 'babel-loader',
              exclude: /node_modules/,
              query:{
-                 presets: ['es2015','react'],
+                 presets: ['es2015'],
                  plugins: ['transform-object-rest-spread']
              }
          },{
